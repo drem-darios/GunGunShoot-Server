@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import com.drem.games.ggs.player.RemotePlayer;
-import com.drem.games.ggs.weapon.WeaponAction;
+import com.drem.games.ggs.player.action.ActionType;
 
 /**
  * @author drem
@@ -14,8 +14,8 @@ public class Session implements Runnable {
 	private RemotePlayer player1;
 	private RemotePlayer player2;
 
-	private WeaponAction action1;
-	private WeaponAction action2;
+	private ActionType action1;
+	private ActionType action2;
 	private boolean player1Moved;
 	private boolean player2Moved;
 	
