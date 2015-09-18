@@ -4,11 +4,12 @@
 
 	<groupId>com.drem.games</groupId>
 	<artifactId>ggs-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ggs-server</name>
-	<url>http://maven.apache.org</url>
+	<name>Gun Gun Shoot Server</name>
+	<description>The Multiplayer Server for the Gun Gun Shoot game.</description>
+	<url>https://github.com/drem-darios/GunGunShoot-Server</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,16 +19,28 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		
         <dependency>
             <groupId>com.drem.games</groupId>
             <artifactId>ggs</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.2-SNAPSHOT</version>
         </dependency>
 	</dependencies>
+	<scm>
+		<url>git@github.com:drem-darios/GunGunShoot-Server.git</url>
+		<connection>scm:git:git@github.com:drem-darios/GunGunShoot-Server.git</connection>
+		<developerConnection>scm:git:git@github.com:drem-darios/GunGunShoot-Server.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/drem-darios/GunGunShoot-Server/issues</url>
+	</issueManagement>
+	
 	<developers>
 		<developer>
 			<id>drem-darios</id>
