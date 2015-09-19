@@ -22,45 +22,43 @@ public class Session implements Runnable {
 	public Session(Socket client1, Socket client2) throws IOException {
 		player1 = new RemotePlayer(client1);
 		player2 = new RemotePlayer(client2);
+		
+		client1.getOutputStream().write("Player ready!\n\r".getBytes());
+		client1.getOutputStream().flush();
+		
+		client2.getOutputStream().write("Player ready!\n\r".getBytes());
+		client2.getOutputStream().flush();
 	}
 
 	public void run() {
 		System.out.println("Session started!");
 		
-		try {
-			player1.write("Player 1 begin!");
-			player2.write("Player 2 begin!");
-		
-			while(true) {
-				Thread readMove1 = new Thread(new Runnable() {
-					public void run() {
-						action1 = player1.readMove();
-						player1Moved = true;
-					}
-				});
+		while(true) {
+			Thread readMove1 = new Thread(new Runnable() {
+				public void run() {
+					action1 = player1.readMove();
+					player1Moved = true;
+				}
+			});
 
-				Thread readMove2 = new Thread(new Runnable() {
-					public void run() {
-						action2 = player2.readMove();
-						player2Moved = true;
-					}
-				});
-				
-				readMove1.start();
-				readMove2.start();
-				
-				waitForOpponent();
-				
-				player1.writeMove(action2);
-				player2.writeMove(action1);
-				
-				player1Moved = false;
-				player2Moved = false;
-	
-			}			
+			Thread readMove2 = new Thread(new Runnable() {
+				public void run() {
+					action2 = player2.readMove();
+					player2Moved = true;
+				}
+			});
 			
-		} catch (IOException e) {
-			e.printStackTrace();
+			readMove1.start();
+			readMove2.start();
+			
+			waitForOpponent();
+			
+			player1.writeMove(action2);
+			player2.writeMove(action1);
+			
+			player1Moved = false;
+			player2Moved = false;
+
 		}
 	}
 	
